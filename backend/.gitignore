@@ -6,6 +6,9 @@
 /out-tsc
 /bazel-out
 
+#Job
+/saved_forms
+
 # Node
 /node_modules
 npm-debug.log

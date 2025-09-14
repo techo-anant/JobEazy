@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Job } from '../../models/newJob.model';
 import { CommonModule } from '@angular/common';
+import { JobService } from '../../services/job.service';
 
 @Component({
   selector: 'app-upload',
@@ -10,6 +11,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './upload.component.css'
 })
 export class UploadComponent {
+  jobService = inject(JobService)
+
   jobForm = new FormGroup({
     companyName: new FormControl('', Validators.required),
     positionName: new FormControl('', Validators.required),
@@ -31,7 +34,17 @@ export class UploadComponent {
         jobDescription: this.jobForm.value.jobDescription,
         isAccepted: false,
       };
-      console.log(newJob);
+      // Send the job to backend
+      this.jobService.saveJob(newJob).subscribe({
+        next: (res) => {
+          console.log('Job saved successfully!', res);
+          // Optionally reset form
+          this.jobForm.reset();
+        },
+        error: (err) => {
+          console.error('Failed to save job', err);
+        }
+      });
     }
   }
 }

@@ -23,7 +23,9 @@ app.get('/', (req: Request, res: Response) => {
 
 app.post('/save-form', async (req: Request, res: Response) => {
     const data: Job = req.body;
-    const filename: string = `job_${encodeURIComponent(data.companyName)}_${encodeURIComponent(data.positionName)}.json`;
+    const safeCompany = sanitizeFilename(data.companyName);
+    const safePosition = sanitizeFilename(data.positionName);
+    const filename = `job_${safeCompany}_${safePosition}.json`;
     const filepath: string = path.join(SAVE_DIR, filename);
     try {
         await fs.promises.writeFile(filepath, JSON.stringify(data, null, 2));
@@ -55,4 +57,10 @@ const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Backend running at http://localhost:${PORT}`);
 });
+
+
+function sanitizeFilename(name: string): string {
+    return name.replace(/[^a-zA-Z0-9_-]/g, '-');
+}
+
 

@@ -1,15 +1,17 @@
-<div>
-    <h2>Saved Jobs</h2>
+<div class="flex-center flex-col">
+    <h1>Jobs Applied</h1>
     <ul>
         <li *ngFor="let file of files">
-            {{ file }}
+            <div class="flex-center gap-4">
+                <h2>{{ getCompanyAndPosition(file).company }}</h2>
+                <h2>{{ getCompanyAndPosition(file).position }}</h2>
+            </div>
             <button (click)="viewJob(file)">View</button>
         </li>
     </ul>
-
-    <div *ngIf="selectedJob">
-        <h3>{{ selectedJob.positionName }} at {{ selectedJob.companyName }}</h3>
-        <p *ngIf="selectedJob.jobDescription">{{ selectedJob.jobDescription }}</p>
-        <a *ngIf="selectedJob.siteUrl" [href]="selectedJob?.siteUrl" target="_blank">Website</a>
+    <div *ngIf="isSelected() && selectedJob">
+        <h3>{{ selectedJob?.positionName }} at {{ selectedJob?.companyName }}</h3>
+        <p *ngIf="selectedJob?.jobDescription">{{ selectedJob?.jobDescription }}</p>
+        <a *ngIf="selectedJob?.siteUrl" [href]="selectedJob?.siteUrl" target="_blank">Website</a>
     </div>
 </div>
