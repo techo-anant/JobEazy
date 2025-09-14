@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { NewJob } from '../../models/newJob.model';
+import { Job } from '../../models/newJob.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -21,16 +21,16 @@ export class UploadComponent {
   thirtyDaysFromNow: Date = new Date(this.now.getDate() + 30);
 
   onSubmit(): void {
-    if(this.jobForm.valid){
-      const newJob = new NewJob(
-        this.jobForm.value.companyName!,
-        this.jobForm.value.positionName!,
-        this.now.toDateString(),
-        this.thirtyDaysFromNow.toDateString(),
-        this.jobForm.value.siteUrl,
-        this.jobForm.value.jobDescription,
-        false,
-      );
+    if (this.jobForm.valid) {
+      const newJob: Job = {
+        companyName: this.jobForm.value.companyName!,
+        positionName: this.jobForm.value.positionName!,
+        date: this.now.toDateString(),
+        dateToOld: this.thirtyDaysFromNow.toDateString(),
+        siteUrl: this.jobForm.value.siteUrl,
+        jobDescription: this.jobForm.value.jobDescription,
+        isAccepted: false,
+      };
       console.log(newJob);
     }
   }
