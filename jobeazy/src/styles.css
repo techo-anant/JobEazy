@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    @apply h-full top-0 bottom-0 outline-none p-0 m-0 text-black dark:text-white bg-white dark:bg-gray-800;
+}
+
+
+@layer components {
+    .labelName {
+        @apply py-3 px-2 text-xl;
+    }
+
+    .formWarning {
+        @apply text-red-600 px-2 text-sm;
+    }
+}
+
+@layer utilities {
+    .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input-width {
+        width: 20rem;
+        max-width: 700px;
+        height: auto;
+        @apply sm:w-[30rem] md:w-[40rem] lg:w-[70rem];
+    }
+}

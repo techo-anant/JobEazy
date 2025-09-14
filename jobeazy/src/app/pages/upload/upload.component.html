@@ -1,0 +1,61 @@
+<div class="flex-center flex-col">
+    <h1 class="flex-center">Applied to a new Job!</h1>
+    <h2 class="flex-center">Add it to your file system</h2>
+
+    <div class="w-fit p-4 flex justify-center items-center shadow-xl rounded-xl">
+        <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="flex flex-col">
+
+            <label for="company">
+                <div class="labelName">Company Name: </div>
+                <input 
+                    type="text" 
+                    placeholder="Company" 
+                    formControlName="companyName"
+                    class="input-width"
+                >
+            </label>
+            <div 
+                *ngIf="jobForm.get('companyName')?.invalid && jobForm.get('companyName')?.touched"
+                class="formWarning"
+            >
+                Company name is required
+            </div>
+
+            <label for="position">
+                <div class="labelName">Position: </div>
+                <input 
+                    type="text" 
+                    placeholder="Position" 
+                    formControlName="positionName"
+                    class="input-width"
+                >
+            </label>
+            <div 
+                *ngIf="jobForm.get('positionName')?.invalid && jobForm.get('positionName')?.touched"
+                class="formWarning"
+            >
+                Positon name is required
+            </div>
+
+            <label for="siteUrl">
+                <div class="labelName">URL: </div>
+                <input 
+                    type="text" 
+                    placeholder="Site URL (optional)" 
+                    formControlName="siteUrl"
+                    class="input-width"
+                >
+            </label>
+
+            <label for="siteUrl">
+                <div class="labelName">Job Description: </div>
+                <textarea 
+                    placeholder="Description (optional)" 
+                    formControlName="jobDescription"
+                    class="input-width"
+                ></textarea>
+            </label>
+        </form>
+
+    </div>
+</div>
