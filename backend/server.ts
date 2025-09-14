@@ -5,15 +5,21 @@ import fs from 'fs';
 import path from 'path';
 import type { Job } from './models/newJob.model';
 import { fileURLToPath } from 'url';
+import cors from 'cors';
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const SAVE_DIR = path.join(__dirname, 'saved_forms');
 if (!fs.existsSync(SAVE_DIR)) fs.mkdirSync(SAVE_DIR);
+
+app.get('/', (req: Request, res: Response) => {
+    res.send('Backend is running!');
+})
 
 app.post('/save-form', async (req: Request, res: Response) => {
     const data: Job = req.body;

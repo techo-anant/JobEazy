@@ -3,58 +3,38 @@
     <h2 class="flex-center">Add it to your file system</h2>
 
     <div class="w-fit p-4 flex justify-center items-center shadow-xl rounded-xl">
-        <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="flex flex-col">
+        <form [formGroup]="jobForm" (ngSubmit)="onSubmit()" class="flex flex-col items-center">
 
             <label for="company">
                 <div class="labelName">Company Name: </div>
-                <input 
-                    type="text" 
-                    placeholder="Company" 
-                    formControlName="companyName"
-                    class="input-width"
-                >
+                <input type="text" placeholder="Company" formControlName="companyName" class="input-width">
             </label>
-            <div 
-                *ngIf="jobForm.get('companyName')?.invalid && jobForm.get('companyName')?.touched"
-                class="formWarning"
-            >
+            <div *ngIf="jobForm.get('companyName')?.invalid && jobForm.get('companyName')?.touched" class="formWarning">
                 Company name is required
             </div>
 
             <label for="position">
                 <div class="labelName">Position: </div>
-                <input 
-                    type="text" 
-                    placeholder="Position" 
-                    formControlName="positionName"
-                    class="input-width"
-                >
+                <input type="text" placeholder="Position" formControlName="positionName" class="input-width">
             </label>
-            <div 
-                *ngIf="jobForm.get('positionName')?.invalid && jobForm.get('positionName')?.touched"
-                class="formWarning"
-            >
+            <div *ngIf="jobForm.get('positionName')?.invalid && jobForm.get('positionName')?.touched"
+                class="formWarning">
                 Positon name is required
             </div>
 
             <label for="siteUrl">
                 <div class="labelName">URL: </div>
-                <input 
-                    type="text" 
-                    placeholder="Site URL (optional)" 
-                    formControlName="siteUrl"
-                    class="input-width"
-                >
+                <input type="text" placeholder="Site URL (optional)" formControlName="siteUrl" class="input-width">
             </label>
 
             <label for="siteUrl">
                 <div class="labelName">Job Description: </div>
-                <textarea 
-                    placeholder="Description (optional)" 
-                    formControlName="jobDescription"
-                    class="input-width"
-                ></textarea>
+                <textarea placeholder="Description (optional)" formControlName="jobDescription"
+                    class="input-width"></textarea>
             </label>
+            <button type="submit" class="w-[20rem] mt-4 p-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700">
+                Save Job
+            </button>
         </form>
 
     </div>

@@ -1,0 +1,15 @@
+<div>
+    <h2>Saved Jobs</h2>
+    <ul>
+        <li *ngFor="let file of files">
+            {{ file }}
+            <button (click)="viewJob(file)">View</button>
+        </li>
+    </ul>
+
+    <div *ngIf="selectedJob">
+        <h3>{{ selectedJob.positionName }} at {{ selectedJob.companyName }}</h3>
+        <p *ngIf="selectedJob.jobDescription">{{ selectedJob.jobDescription }}</p>
+        <a *ngIf="selectedJob.siteUrl" [href]="selectedJob?.siteUrl" target="_blank">Website</a>
+    </div>
+</div>

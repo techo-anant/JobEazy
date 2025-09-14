@@ -5,7 +5,7 @@
 
 html,
 body {
-    @apply h-full top-0 bottom-0 outline-none p-0 m-0 text-black dark:text-white bg-white dark:bg-gray-800;
+    @apply min-h-screen w-screen top-0 bottom-0 outline-none p-0 m-0 text-black dark:text-white bg-white dark:bg-gray-800;
 }
 
 
