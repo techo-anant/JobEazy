@@ -66,7 +66,7 @@ Ensure you have the following installed:
 
     ```bash
     cd ../jobeazy
-    npm start
+    ng serve
     ```
 
 3.	Open your browser and navigate to http://localhost:4200 to access the application.
