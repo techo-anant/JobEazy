@@ -72,5 +72,6 @@ Ensure you have the following installed:
 3.	Open your browser and navigate to http://localhost:4200 to access the application.
 
 ## 📌 Notes
-### The backend uses a local JSON file (applications.json) to store application data. This setup is suitable for development and testing purposes. For production environments, consider integrating a database system.
-### Tailwind CSS is used for styling the frontend, providing a utility-first approach to design.
+The backend uses a local JSON file (applications.json) to store application data. This setup is suitable for development and testing purposes. For production environments, consider integrating a database system.
+
+Tailwind CSS is used for styling the frontend, providing a utility-first approach to design.
