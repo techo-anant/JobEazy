@@ -2,11 +2,14 @@ import { Component, OnInit, signal } from '@angular/core';
 import { Job } from '../../models/newJob.model';
 import { JobService } from '../../services/job.service';
 import { CommonModule } from '@angular/common';
+import { SanitizeStringPipe } from '../../pipes/sanitize-string.pipe';
+import { NewlineToBrPipe } from '../../pipes/newline-to-br.pipe';
+
 
 @Component({
   selector: 'app-list-job',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SanitizeStringPipe, NewlineToBrPipe],
   templateUrl: './list-job.component.html',
   styleUrl: './list-job.component.css'
 })
