@@ -1,0 +1,18 @@
+<div class="flex-center flex-col">
+    <h1>Jobs Applied</h1>
+    <div [ngClass]="isSelected()? 'blur': ''">
+        <ul>
+            <li *ngFor="let file of files" class="flex flex-row justify-between">
+                <div class="flex-center gap-4">
+                    <h2>{{ getCompanyAndPosition(file).company }}</h2>
+                    <h2>{{ getCompanyAndPosition(file).position | sanitizeString:'-':' '}}</h2>
+                </div>
+                <button (click)="openJob(file)" class="btn mx-3">View</button>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="isSelected() && selectedJob">
+        <app-job-desc [selectedJob]="selectedJob" (close)="closeJob()">
+        </app-job-desc>
+    </div>
+</div>

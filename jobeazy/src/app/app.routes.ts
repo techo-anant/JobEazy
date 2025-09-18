@@ -10,6 +10,6 @@ export const routes: Routes = [
     {
         path: 'jobs',
         loadComponent: () =>
-            import('./components/list-job/list-job.component').then((m) => m.ListJobComponent),
+            import('./pages/list-job/list-job.component').then((m) => m.ListJobComponent),
     },
 ];
